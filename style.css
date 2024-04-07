@@ -106,7 +106,7 @@ header {
 }
 
 /*Image in the Middle*/
-.imageMiddle {
+#imageMiddle {
     background-color: #808080;
     padding: 1vh;
     border-radius: 2vh;
