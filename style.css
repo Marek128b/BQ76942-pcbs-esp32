@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: rgb(32, 32, 38);
+    background: #202026;
     color: #f7f7f7;
 }
 
@@ -34,7 +34,7 @@ header h1 {
 }
 
 .navlink li a:hover {
-    background-color: aqua;
+    background-color: #00ffff;
 }
 
 header {
@@ -52,19 +52,21 @@ header {
 
 #main p {
     max-width: 50vw;
+    max-width: 50vmax;
     margin: auto;
-    font-size: 21px;
-    line-height: 32px;
-    color: rgba(255, 255, 255, 0.808);
+    font-size: 3.2vw;
+    font-size: 0.9vmax;
+    color: rgba(255, 255, 255, 0.925);
     padding-top: 28px;
     margin-bottom: 0;
     position: relative;
 }
 
 /*text*/
-h1 {
+#main h1 {
     padding-top: 1rem;
     text-align: center;
+    font-size: 3vh;
 }
 
 #buymeacoffee {
@@ -75,4 +77,35 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/*sections*/
+.section {
+    max-width: 50vw;
+    max-width: 50vmax;
+    margin: auto;
+}
+
+.section h2 {
+    text-align: left;
+    padding-top: 4rem;
+    font-size: 2.6vh;
+    font-size: 1.2vmax;
+}
+
+.section img {
+    background-color: rgb(255, 255, 255);
+    padding: 4vh;
+    border-radius: 1vh;
+    margin-top: 2vh;
+    width: 100%;
+}
+
+.section .line {
+    margin-top: 1.5rem;
+    border-bottom: 4px solid rgb(177, 177, 177);
+    width: 95vw;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
