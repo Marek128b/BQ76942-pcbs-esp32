@@ -46,12 +46,7 @@ header {
 
 /*main*/
 #main {
-    margin: auto;
     max-width: 80vw;
-}
-
-#main p {
-    max-width: 50vw;
     max-width: 50vmax;
     margin: auto;
     font-size: 3.2vw;
@@ -108,4 +103,13 @@ header {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+/*Image in the Middle*/
+.imageMiddle {
+    background-color: #808080;
+    padding: 1vh;
+    border-radius: 2vh;
+    margin-top: 2vh;
+    width: 50%;
 }
