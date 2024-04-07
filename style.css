@@ -113,3 +113,6 @@ header {
     margin-top: 2vh;
     width: 50%;
 }
+
+/*create blurry image small: 
+ffmpeg -i input.jpg -vf scale=20:-1 output.png*/
