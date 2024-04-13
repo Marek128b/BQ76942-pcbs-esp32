@@ -18,6 +18,7 @@ class CustomSectionPreprocessor(Preprocessor):
             header_match = re.match(r'^\s*#{1,6}\s+(.*)', line)
             if header_match:
                 if in_section:
+                    new_lines.append('<div class="line"></div>')  # Add line divider
                     new_lines.append('</div>')  # Close the previous section
                     new_lines.append('</section>')  # Close the previous section
                 header_content = header_match.group(1).strip()
@@ -49,6 +50,7 @@ class CustomSectionPreprocessor(Preprocessor):
                 else:
                     new_lines.append(f'<p>{line.strip()}</p>')
         if in_section:
+            new_lines.append('<div class="line"></div>')  # Add line divider
             new_lines.append('</div>')  # Close the last section
             new_lines.append('</section>')  # Close the last section
         return new_lines
