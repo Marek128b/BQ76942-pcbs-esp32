@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: #202026;
+    color: #f7f7f7;
+}
+
+/*header*/
+header,
+li,
+a {
+    color: #f7f7f7;
+    text-decoration: none;
+}
+
+header h1 {
+    padding-left: 5%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
+}
+
+.navlink {
+    list-style: none;
+}
+
+.navlink li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.navlink li a {
+    font-size: larger;
+    transition: all 0.5s ease 0s;
+}
+
+.navlink li a:hover {
+    background-color: #00ffff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+/*main*/
+#main {
+    max-width: 80vw;
+    max-width: 50vmax;
+    margin: auto;
+    font-size: 3.2vw;
+    font-size: 0.9vmax;
+    color: rgba(255, 255, 255, 0.925);
+    padding-top: 28px;
+    margin-bottom: 0;
+    position: relative;
+}
+
+/*text*/
+#main h1 {
+    padding-top: 1rem;
+    text-align: center;
+    font-size: 3vh;
+}
+
+#buymeacoffee {
+    margin: 1.5rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*sections*/
+.section {
+    max-width: 50vw;
+    max-width: 50vmax;
+    margin: auto;
+}
+
+.section h2 {
+    text-align: left;
+    padding-top: 4rem;
+    font-size: 2.6vh;
+    font-size: 1.2vmax;
+}
+
+.section img {
+    background-color: rgb(255, 255, 255);
+    padding: 4vh;
+    border-radius: 1vh;
+    margin-top: 2vh;
+    width: 100%;
+}
+
+.section .line {
+    margin-top: 1.5rem;
+    border-bottom: 4px solid rgb(177, 177, 177);
+    width: 95vw;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*Image in the Middle*/
+#imageMiddle {
+    background-color: #808080;
+    padding: 1vh;
+    border-radius: 2vh;
+    margin-top: 2vh;
+    width: 50%;
+}
+
+/*create blurry image small: 
+ffmpeg -i input.jpg -vf scale=20:-1 output.png*/
