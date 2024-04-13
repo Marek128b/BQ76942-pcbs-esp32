@@ -61,7 +61,70 @@
                     vehicles, renewable energy storage systems, and portable electronics.
                 </p>
                 <img alt="simplified block diagram image" class="lazy" src="documents\img\BQ76942-diagram-drawio.png"
-                data-src="documents\img\BQ76942-diagram.drawio.svg">
+                    data-src="documents\img\BQ76942-diagram.drawio.svg">
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <!--Functional Block Diagram-->
+        <section id="functional-block-diagram">
+            <div class="section">
+                <h2>Functional Block Diagram</h2>
+                <img src="documents/img/functional-block-diagram.png" alt="functional block diagram">
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <!--Voltage Measurement-->
+        <section id="voltage-measurement">
+            <div class="section">
+                <h2>Voltage Measurement</h2>
+                <p>`Technical Reference Manual BQ76942 @ page 19`</p>
+                <p>The BQ76942 device integrates a voltage ADC that is multiplexed between measurements of cell
+                    voltages, an internal temperature sensor, up to nine external thermistors, and also performs
+                    measurements of the voltage at the VC10 pin, the PACK pin, the LD pin, the internal Vref used by the
+                    coulomb counter, and the VSS rail (for diagnostic purposes). The BQ76942 device supports measurement
+                    of individual differential cell voltages in a series configuration, ranging from 3 series cells to
+                    10 series cells. Each cell
+                    voltage measurement is a differential measurement of the voltage between two adjacent cell input
+                    pins, such as VC1–VC0, VC2–VC1, and so forth. The cell voltage measurements are processed based on
+                    trim and calibration corrections, and
+                    then reported in 16-bit resolution using units of 1 mV. The raw 24-bit digital output of the ADC is
+                    also
+                    available for readout using 32-bit subcommands (the 24-bit data is contained in the lower 3 bytes of
+                    the
+                    32-bit data, and is sign-extended to create the upper byte). The cell voltage measurements can
+                    support a
+                    recommended voltage range from –0.2 V to 5.5 V. If a cell voltage is applied that exceeds a level of
+                    5 ×
+                    VREF1 (approximately 6.06 V), the device may report a value of –6.06 V (and the cell voltage raw
+                    counts
+                    similarly would report a value of -8388608). For best performance, stay at a maximum input of 5.5 V.
+                    The
+                    16-bit cell and VC10 (stack), PACK, and LD pin voltage measurements are available by using the
+                    commands
+                    listed below.</p>
+                <img src="documents/img/voltage-messurement-diagram.png" alt="voltage measurement diagram">
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <!--Direct and sub commands-->
+        <section id="direct-commands-and-sub-commands">
+            <div class="section">
+                <h2>Direct commands and sub commands</h2>
+                <p>`Technical Reference Manual BQ76942 @ page 13`</p>
+                <p>The direct commands are accessed using a 7-bit command address that is sent from a host through the
+                    device
+                    serial communications interface and either triggers an action, provides a data value to be written
+                    to the
+                    device, or instructs the device to report data back to the host.</p>
+                <p>Subcommands are additional commands that are accessed indirectly using the 7-bit command address
+                    space and
+                    provide the capability for block data transfers. When a subcommand is initiated, a 16-bit</p>
+                <p>subcommand address is first written to the 7-bit command addresses 0x3E (lower byte) and 0x3F (upper
+                    byte).
+                </p>
                 <div class="line"></div>
             </div>
         </section>
