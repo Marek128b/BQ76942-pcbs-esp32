@@ -74,6 +74,11 @@ header {
     align-items: center;
 }
 
+/*table of content*/
+#table_of_content {
+    padding-top: 2em;
+}
+
 /*sections*/
 .section {
     max-width: 50vw;
@@ -98,8 +103,8 @@ header {
 
 .section .line {
     margin-top: 1.5rem;
-    border-bottom: 4px solid rgb(177, 177, 177);
-    width: 95vw;
+    border-bottom: 2px solid rgb(177, 177, 177);
+    width: 50vw;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);

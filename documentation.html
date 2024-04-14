@@ -25,8 +25,21 @@
     </header>
     <main id="main">
         <h1>Documentation Webpage for the BQ76942 project</h1>
-        <section id="table of content">
-            table of content TODO
+        <section id="table_of_content">
+            <ol>
+                <li>
+                    <a href="#simple-block-diagram">Short Description</a>
+                </li>
+                <li>
+                    <a href="#functional-block-diagram">functional-block-diagram</a>
+                </li>
+                <li>
+                    <a href="#voltage-measurement">voltage-measurement</a>
+                </li>
+                <li>
+                    <a href="#direct-commands-and-sub-commands">direct-commands-and-sub-commands</a>
+                </li>
+            </ol>
         </section>
 
         <!-- 
@@ -45,15 +58,15 @@
         <!--The start of a documentation webpage-->
         <section id="simple-block-diagram">
             <div class="section">
-                <h2>Short Description</h2>
+                <h2>1. Short Description</h2>
                 <p>
                     The BQ76942 Balancer is an integrated circuit specifically designed for battery management
                     applications, with a particular focus on multi-cell lithium-ion or lithium-polymer battery packs.
                     Serving as a sophisticated component of a battery management system (BMS), the BQ76942 offers
                     advanced functionalities such as monitoring cell voltages, balancing charge distribution, and
                     sensing temperature levels. Its primary objective is to ensure the safe and efficient operation of
-                    battery packs by closely monitoring individual cell voltages and tem-perature, thereby preventing
-                    issues like overcharging, over-discharging, and thermal runa-way. By redistributing charge among
+                    battery packs by closely monitoring individual cell voltages and temperature, thereby preventing
+                    issues like overcharging, over-discharging, and thermal runaway. By redistributing charge among
                     cells, the balancer functionality maintains optimal cell balance, extending battery life and
                     enhancing the overall reliability of the system. With its compact size and comprehensive range of
                     features, the BQ76942 Balancer plays a crucial role in the design and implementation of
@@ -69,7 +82,7 @@
         <!--Functional Block Diagram-->
         <section id="functional-block-diagram">
             <div class="section">
-                <h2>Functional Block Diagram</h2>
+                <h2>2. Functional Block Diagram</h2>
                 <img src="documents/img/functional-block-diagram.png" alt="functional block diagram">
                 <div class="line"></div>
             </div>
@@ -78,32 +91,27 @@
         <!--Voltage Measurement-->
         <section id="voltage-measurement">
             <div class="section">
-                <h2>Voltage Measurement</h2>
-                <p>`Technical Reference Manual BQ76942 @ page 19`</p>
+                <h2>3. Voltage Measurement</h2>
                 <p>The BQ76942 device integrates a voltage ADC that is multiplexed between measurements of cell
                     voltages, an internal temperature sensor, up to nine external thermistors, and also performs
                     measurements of the voltage at the VC10 pin, the PACK pin, the LD pin, the internal Vref used by the
                     coulomb counter, and the VSS rail (for diagnostic purposes). The BQ76942 device supports measurement
                     of individual differential cell voltages in a series configuration, ranging from 3 series cells to
-                    10 series cells. Each cell
-                    voltage measurement is a differential measurement of the voltage between two adjacent cell input
+                    10 series cells. Each cell voltage measurement is a differential measurement of the voltage between
+                    two adjacent cell input
                     pins, such as VC1–VC0, VC2–VC1, and so forth. The cell voltage measurements are processed based on
-                    trim and calibration corrections, and
-                    then reported in 16-bit resolution using units of 1 mV. The raw 24-bit digital output of the ADC is
-                    also
-                    available for readout using 32-bit subcommands (the 24-bit data is contained in the lower 3 bytes of
-                    the
-                    32-bit data, and is sign-extended to create the upper byte). The cell voltage measurements can
-                    support a
-                    recommended voltage range from –0.2 V to 5.5 V. If a cell voltage is applied that exceeds a level of
-                    5 ×
-                    VREF1 (approximately 6.06 V), the device may report a value of –6.06 V (and the cell voltage raw
-                    counts
-                    similarly would report a value of -8388608). For best performance, stay at a maximum input of 5.5 V.
-                    The
-                    16-bit cell and VC10 (stack), PACK, and LD pin voltage measurements are available by using the
-                    commands
-                    listed below.</p>
+                    trim and calibration corrections, and then reported in 16-bit resolution using units of 1 mV. The
+                    raw 24-bit digital output of the ADC is
+                    also available for readout using 32-bit subcommands (the 24-bit data is contained in the lower 3
+                    bytes of
+                    the 32-bit data, and is sign-extended to create the upper byte). The cell voltage measurements can
+                    support a recommended voltage range from –0.2 V to 5.5 V. If a cell voltage is applied that exceeds
+                    a level of
+                    5 × VREF1 (approximately 6.06 V), the device may report a value of –6.06 V (and the cell voltage raw
+                    counts similarly would report a value of -8388608). For best performance, stay at a maximum input of
+                    5.5 V.
+                    The 16-bit cell and VC10 (stack), PACK, and LD pin voltage measurements are available by using the
+                    commands listed below.</p>
                 <img src="documents/img/voltage-messurement-diagram.png" alt="voltage measurement diagram">
                 <div class="line"></div>
             </div>
@@ -112,16 +120,13 @@
         <!--Direct and sub commands-->
         <section id="direct-commands-and-sub-commands">
             <div class="section">
-                <h2>Direct commands and sub commands</h2>
-                <p>`Technical Reference Manual BQ76942 @ page 13`</p>
+                <h2>4. Direct commands and sub commands</h2>
                 <p>The direct commands are accessed using a 7-bit command address that is sent from a host through the
-                    device
-                    serial communications interface and either triggers an action, provides a data value to be written
-                    to the
-                    device, or instructs the device to report data back to the host.</p>
+                    device serial communications interface and either triggers an action, provides a data value to be
+                    written to the device, or instructs the device to report data back to the host.</p>
                 <p>Subcommands are additional commands that are accessed indirectly using the 7-bit command address
-                    space and
-                    provide the capability for block data transfers. When a subcommand is initiated, a 16-bit</p>
+                    space and provide the capability for block data transfers. When a subcommand is initiated, a 16-bit
+                </p>
                 <p>subcommand address is first written to the 7-bit command addresses 0x3E (lower byte) and 0x3F (upper
                     byte).
                 </p>
@@ -140,7 +145,6 @@
                     connections that lead to the BQ76942 Battery Management IC, except for the VC10 connection as this
                     Pin has to be connected to the last Cell of the Battery pack.
                 </p>
-                <!--<img src="documents\img\BQ76942-diagram.drawio.svg" alt="simplified block diagram image">-->
                 <div class="line"></div>
             </div>
         </section>
