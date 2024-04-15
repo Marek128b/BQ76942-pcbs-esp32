@@ -61,7 +61,7 @@ header {
 #main h1 {
     padding-top: 1rem;
     text-align: center;
-    font-size: 3vh;
+    font-size: 1.75vw;
 }
 
 #buymeacoffee {
@@ -77,6 +77,11 @@ header {
 /*table of content*/
 #table_of_content {
     padding-top: 2em;
+    padding-left: 1em;
+}
+
+#table_of_content li {
+    padding-top: 0.35em;
 }
 
 /*sections*/
@@ -88,21 +93,25 @@ header {
 
 .section h2 {
     text-align: left;
-    padding-top: 4rem;
+    padding-top: 2em;
     font-size: 2.6vh;
     font-size: 1.2vmax;
 }
 
+.section p {
+    padding-left: 1.2em;
+}
+
 .section img {
     background-color: rgb(255, 255, 255);
-    padding: 4vh;
-    border-radius: 1vh;
-    margin-top: 2vh;
+    padding: 4em;
+    border-radius: 1em;
+    margin-top: 2em;
     width: 100%;
 }
 
 .section .line {
-    margin-top: 1.5rem;
+    margin-top: 1.5em;
     border-bottom: 2px solid rgb(177, 177, 177);
     width: 50vw;
     position: absolute;
@@ -113,9 +122,9 @@ header {
 /*Image in the Middle*/
 #imageMiddle {
     background-color: #808080;
-    padding: 1vh;
-    border-radius: 2vh;
-    margin-top: 2vh;
+    padding: 1em;
+    border-radius: 2em;
+    margin-top: 2em;
     width: 50%;
 }
 
