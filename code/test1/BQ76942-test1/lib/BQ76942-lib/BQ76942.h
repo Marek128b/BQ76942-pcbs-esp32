@@ -28,6 +28,10 @@ private:
 #define packPinVoltage 0x36
 #define LDPinVoltage 0x38
 
+#define subcommand_lower 0x3E
+#define subcommand_upper 0x3F
+#define subcommand_buffer 0x40
+
 public:
     BQ76942(byte address = 0b0000000); // TODO set the right address for the chip
 
@@ -37,6 +41,9 @@ public:
     void begin(int SDA, int SCL, int frequency);
 
     uint16_t getCellVoltage(byte cellNr);
+
+    // inefficient method to read and validate subcommand buffer, 32Byte array buffer
+    byte getSubCommandBuffer(byte scl, byte scu, byte *buffer);
 };
 
 #endif

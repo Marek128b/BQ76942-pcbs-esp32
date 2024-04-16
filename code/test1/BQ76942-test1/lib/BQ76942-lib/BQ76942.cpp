@@ -17,15 +17,15 @@ void BQ76942::begin(int SDA, int SCL, int frequency)
     Wire.begin(SDA, SCL, frequency);
 }
 
-//------------------------------------------------------------------------------General Functions------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------General Functions-----------------------------------------------------------------------------------------------------
 uint16_t BQ76942::get16BitRegister(byte registerNr)
 {
     uint16_t output;
 
     Wire.beginTransmission(this->address); // write to Address
-    Wire.write(0b000010000);  // reading data to I2C device address
-    Wire.write(registerNr);   // register address
-    Wire.endTransmission();   // end Transmission I2C
+    Wire.write(0b000010000);               // reading data to I2C device address
+    Wire.write(registerNr);                // register address
+    Wire.endTransmission();                // end Transmission I2C
 
     Wire.requestFrom(registerNr, 2); // requesting two bytes from the I2C address
     if (Wire.available() >= 2)
@@ -37,8 +37,32 @@ uint16_t BQ76942::get16BitRegister(byte registerNr)
 }
 
 //------------------------------------------------------------------------------read Cells------------------------------------------------------------------------------------------------------------
-//reads the cells at index 1 - 10 returns a 16 Bit int
+// reads the cells at index 1 - 10 returns a 16 Bit int
 uint16_t BQ76942::getCellVoltage(byte cellNr)
 {
-    get16BitRegister(cellToRegisterMap[cellNr-1]);
+    get16BitRegister(cellToRegisterMap[cellNr - 1]);
+}
+
+//------------------------------------------------------------------------------read sub command buffer-----------------------------------------------------------------------------------------------
+// inefficient method to read and validate subcommand buffer, 32Byte array buffer, returns buffer status
+byte BQ76942::getSubCommandBuffer(byte scl, byte scu, byte *buffer)
+{
+    // TODO Method
+    Wire.beginTransmission(this->address); // write to Address
+    Wire.write(0b000100000);               // writing data to I2C device address ??
+    Wire.write(subcommand_lower);          // register address 1
+    Wire.write(scl);                       // write lower subcommand
+    Wire.write(subcommand_upper);          // register address 2
+    Wire.write(scu);                       // write upper subcommand
+    Wire.endTransmission();                // end Transmission I2C
+
+    Wire.requestFrom(subcommand_buffer, 34); // requesting 32 + 2 bytes from the I2C address
+
+    if (Wire.available() >= 1)
+    {
+        Wire.readBytes(buffer, 34); //TODO checksum and length 
+        return 1;
+    }
+
+    return 0;
 }
