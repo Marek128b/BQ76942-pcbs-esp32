@@ -130,3 +130,8 @@ header {
 
 /*create blurry image small: 
 ffmpeg -i input.jpg -vf scale=20:-1 output.png*/
+strong{
+    background-color: #808080;
+    padding: 0 0.25em;
+    border-radius: 0.25em;
+}

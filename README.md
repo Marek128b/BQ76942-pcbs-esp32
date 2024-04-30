@@ -7,6 +7,7 @@
     - [Functional Block Diagram](#functional-block-diagram)
     - [Voltage Measurement](#voltage-measurement)
     - [Direct commands and sub commands](#direct-commands-and-sub-commands)
+    - [Internal Temperature Measurement](#internal-temperature-measurement)
   - [Voltage Switcher](#voltage-switcher)
   - [Support me](#support-me)
 
@@ -37,6 +38,27 @@ The direct commands are accessed using a 7-bit command address that is sent from
 Subcommands are additional commands that are accessed indirectly using the 7-bit command address space and provide the capability for block data transfers. When a subcommand is initiated, a 16-bit
 subcommand address is first written to the 7-bit command addresses 0x3E (lower byte) and 0x3F (upper byte).
 
+### Internal Temperature Measurement
+The BQ76942 device integrates the capability to measure its internal die temperature by digitizing an 
+`internal
+transistor base-emitter voltage.
+`
+This voltage is measured periodically as part of the measurement loop and is
+processed to provide a temperature value using the `0x68` Int Temperature() command.
+This internal temperature measurement can be used for cell temperature protections
+and logic that uses minimum, maximum, or average cell temperature by setting
+the Settings:Configuration:DA Configuration[TINT_EN] configuration bit and keeping the
+Settings:Configuration:DA Configuration[TINT_FETT] bit cleared. The internal temperature measurement
+can instead be used for FET temperature by setting both Settings:Configuration:DA Configuration[TINT_EN]
+and Settings:Configuration:DA Configuration[TINT_FETT], although in this case it will not be used for cell
+temperature.
+The calculation of temperature is performed as follows:
+`Internal Temperature (in units of 0.1 K) = (ADC value) × Calibration:Internal Temp Model:Int Gain / 65536 +
+Calibration:Internal Temp Model:Int base offset + Calibration:Temperature:Internal Temp Offset`
+except if (ADC value) > Calibration:Internal Temp Model:Int Maximum AD, then the reported internal
+temperature is calculated using the Calibration:Internal Temp Model:Int Maximum AD as the ADC value.
+If internal temperature is calculated > Calibration:Internal Temp Model:Int Maximum Temp, the reported
+internal temperature is set to Calibration:Internal Temp Model:Int Maximum Temp.
 
 ## Voltage Switcher
 The problem stems from the need to create links between the last battery cell and the VC10 and BAT terminals of the integrated circuit (IC), along with the obligation to connect the second-to-last battery cell, starting from its connection point (e.g., 3S Battery VC3), to all previous cell connections that lead to the BQ76942 Battery Management IC, except for the VC10 connection as this Pin has to be connected to the last Cell of the Battery pack.
