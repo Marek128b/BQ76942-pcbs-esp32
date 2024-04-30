@@ -28,9 +28,22 @@ private:
 #define packPinVoltage 0x36
 #define LDPinVoltage 0x38
 
+// subcommands
 #define subcommand_lower 0x3E
 #define subcommand_upper 0x3F
 #define subcommand_buffer 0x40
+    
+// Temperature measurement
+#define Internal_Temperature 0x68
+#define CFETOFF_Temperature 0x6A
+#define DFETOFF_Temperature 0x6C
+#define ALERT_Temperature 0x6E
+#define TS1_Temperature 0x70
+#define TS2_Temperature 0x72
+#define TS3_Temperature 0x74
+#define HDQ_Temperature 0x76
+#define DCHG_Temperature 0x78
+#define DDSG_Temperature 0x7A
 
 public:
     BQ76942(byte address = 0b0000000); // TODO set the right address for the chip

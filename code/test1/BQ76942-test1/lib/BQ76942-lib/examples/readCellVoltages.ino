@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include <BQ76942.h>
 
 BQ76942 battery1; // create a BQ76942 object with the default I2C address
