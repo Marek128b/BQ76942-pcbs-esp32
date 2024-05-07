@@ -18,5 +18,8 @@ void loop()
         Serial.print("Cell Nr."); Serial.print(i); Serial.print(": ");
         Serial.print(battery1.getCellVoltage(i)); // print the read cell voltages to the Serial Monitor
     }
+
+    Serial.println(battery1.getTemperature(Internal_Temperature));
+    
     delay(5000); // wait 5s
 }

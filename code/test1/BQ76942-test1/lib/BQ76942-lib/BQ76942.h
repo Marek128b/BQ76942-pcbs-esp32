@@ -32,7 +32,9 @@ private:
 #define subcommand_lower 0x3E
 #define subcommand_upper 0x3F
 #define subcommand_buffer 0x40
-    
+
+
+public:
 // Temperature measurement
 #define Internal_Temperature 0x68
 #define CFETOFF_Temperature 0x6A
@@ -45,8 +47,7 @@ private:
 #define DCHG_Temperature 0x78
 #define DDSG_Temperature 0x7A
 
-public:
-    BQ76942(byte address = 0b0000000); // TODO set the right address for the chip
+    BQ76942(byte address = 0x10); // default as 0x10 (write), 0x11 (read)
 
     // begin the Wire with default settings: I2C_SCL = GPIO22, I2C_SDA = GPIO21
     void begin();
@@ -57,6 +58,8 @@ public:
 
     // inefficient method to read and validate subcommand buffer, 32Byte array buffer
     byte getSubCommandBuffer(byte scl, byte scu, byte *buffer);
+
+    uint16_t getTemperature(byte temperatureName);
 };
 
 #endif
